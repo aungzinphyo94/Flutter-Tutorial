@@ -1,3 +1,4 @@
+import 'package:custom_list_app/Unit.dart';
 import 'package:custom_list_app/category.dart';
 import 'package:flutter/material.dart';
 
@@ -31,18 +32,31 @@ class CategoryRoute extends StatelessWidget {
   ///For protrait, we construct a listview from list of category widgets.
   Widget _buildCategoryWidgets(List<Widget> categories) {
     return ListView.builder(
-        itemBuilder: (BuildContext context, int index) => categories[index],
-        itemCount: categories.length,
+      itemBuilder: (BuildContext context, int index) => categories[index],
+      itemCount: categories.length,
     );
+  }
+
+  List<Unit> _retrieveUnitList(String categoryName){
+    return List.generate(10, (int i){
+      i += 1;
+      return Unit(
+        name: '$categoryName Unit $i',
+        conversion: i.toDouble(),
+      );
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-
     final categories = <Category>[];
 
-    for (var i = 0; i < _categoryNames.length; i++){
-      categories.add(Category(name: _categoryNames[i], color: _baseColors[i], iconLocation: Icons.cake));
+    for (var i = 0; i < _categoryNames.length; i++) {
+      categories.add(Category(
+          name: _categoryNames[i],
+          color: _baseColors[i],
+          units: _retrieveUnitList(_categoryNames[i]),
+          iconLocation: Icons.cake));
     }
 
     final listView = Container(
