@@ -3,7 +3,7 @@ import 'package:meta/meta.dart';
 
 import 'package:custom_list_app/Unit.dart';
 
-class ConverterRoute extends StatelessWidget {
+class ConverterRoute extends StatefulWidget {
   final String name;
 
   final Color color;
@@ -18,6 +18,12 @@ class ConverterRoute extends StatelessWidget {
         assert(color != null),
         assert(units != null);
 
+  @override
+  _ConverterRouteState createState() => _ConverterRouteState();
+
+}
+
+class _ConverterRouteState extends State<ConverterRoute>{
   @override
   Widget build(BuildContext context) {
     final unitWidgets = units.map((Unit unit) {
