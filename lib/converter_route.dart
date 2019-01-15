@@ -26,11 +26,11 @@ class ConverterRoute extends StatefulWidget {
 class _ConverterRouteState extends State<ConverterRoute>{
   @override
   Widget build(BuildContext context) {
-    final unitWidgets = units.map((Unit unit) {
+    final unitWidgets = widget.units.map((Unit unit) {
       return Container(
         margin: EdgeInsets.all(8.0),
         padding: EdgeInsets.all(8.0),
-        color: color,
+        color: widget.color,
         child: Column(
           children: <Widget>[
             Text(
